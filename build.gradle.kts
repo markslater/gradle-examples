@@ -13,8 +13,8 @@ testing {
         val test by getting(JvmTestSuite::class) {
             useJUnitJupiter()
             dependencies {
-                implementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "5.8.2")
-                runtimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.8.2")
+                implementation("org.junit.jupiter:junit-jupiter:5.8.2")
+                runtimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
             }
         }
     }
