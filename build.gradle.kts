@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    java
 }
 
 java {
@@ -8,13 +8,15 @@ java {
     }
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.8.2"))
-    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter")
-
-    testRuntimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine")
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+            dependencies {
+                implementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "5.8.2")
+                runtimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.8.2")
+            }
+        }
+    }
 }
 
-tasks.test {
-    useJUnitPlatform {}
-}
