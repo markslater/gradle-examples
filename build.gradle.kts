@@ -1,20 +1,28 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    base
+    `maven-publish`
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+group = "com.example"
+
+val tarFoo by tasks.registering(Tar::class) {
+    from("foo")
+    archiveBaseName.set("foo")
+}
+
+val tarBar by tasks.registering(Tar::class) {
+    from("bar")
+    archiveBaseName.set("bar")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            artifact(tarFoo)
+        }
+        create<MavenPublication>("bar") {
+            artifact(tarBar)
+            artifactId = "bar"
+        }
     }
-}
-
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.8.2"))
-    testImplementation(group = "org.junit.jupiter", name = "junit-jupiter")
-
-    testRuntimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine")
-}
-
-tasks.test {
-    useJUnitPlatform {}
 }
