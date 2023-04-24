@@ -1,4 +1,10 @@
-version=System.getenv("FOO") ?: "bar"
+class VersionPlugin : Plugin<Project> {
+    override fun apply(project: Project) {
+        project.version = System.getenv("FOO") ?: "bar"
+    }
+}
+
+apply<VersionPlugin>()
 
 task("printVersion") {
     doLast {
