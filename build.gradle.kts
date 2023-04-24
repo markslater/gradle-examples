@@ -9,7 +9,7 @@ java {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.8.2"))
+    testImplementation(platform("org.junit:junit-bom:5.9.2"))
     testImplementation(group = "org.junit.jupiter", name = "junit-jupiter")
 
     testRuntimeOnly(group = "org.junit.jupiter", name = "junit-jupiter-engine")
