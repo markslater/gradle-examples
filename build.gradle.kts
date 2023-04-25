@@ -11,7 +11,7 @@ open class VersionPluginExtension {
 
 class VersionPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        project.extensions.create<VersionPluginExtension>("versionPlugin")
+        project.extensions.create<VersionPluginExtension>("versionPluginExtension")
     }
 }
 
