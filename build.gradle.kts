@@ -1,12 +1,12 @@
-object Dodgy {
-    override fun toString(): String {
-        println("Called toString")
-        return "qux"
+class LazyVersion {
+    private val version: String by lazy {
+        System.getenv("FOO") ?: "bar"
     }
+    override fun toString() = version
 }
 
 open class VersionPluginExtension {
-    val version = Dodgy
+    val version = LazyVersion()
 }
 
 class VersionPlugin : Plugin<Project> {
