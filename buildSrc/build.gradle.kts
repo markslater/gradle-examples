@@ -6,13 +6,11 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-tasks {
-    test {
-        useJUnitPlatform()
+testing {
+    @Suppress("UnstableApiUsage")
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter("5.10.2")
+        }
     }
 }
