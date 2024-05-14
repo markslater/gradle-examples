@@ -7,3 +7,4 @@
  */
 
 rootProject.name = "example"
+include("subproject")
