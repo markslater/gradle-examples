@@ -11,8 +11,10 @@ val writeFile: Task by tasks.creating {
     }
 }
 
+val myFile: Configuration by configurations.creating
+
 artifacts {
-    add("default", outputFile) {
+    add(myFile.name, outputFile) {
         builtBy(writeFile)
     }
 }
